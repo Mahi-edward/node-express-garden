@@ -8,7 +8,7 @@
     "dev":"nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Maheshwaran",
   "license": "ISC",
   "dependencies": {
     "express": "^4.19.2"
