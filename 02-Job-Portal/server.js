@@ -1,4 +1,10 @@
-const express = require("express")
+// import modules
+import express from "express"
+import dotenv from "dotenv"
+
+// config the .env
+dotenv.config();
+
 
 const app = express()
 
@@ -7,6 +13,11 @@ app.get("/", (req, res) => {
     res.send("<h1>Home Page</h1>")
 })
 
+// PORT 
+const PORT = process.env.PORT || 8080
+
 
 // server listening
-app.listen(8080, () => console.log("Server running on port 8080"))
+app.listen(PORT, () => console.log(`Server is running ${process.env.MODE} mode on port ${PORT}`))
+
+// https://www.conventionalcommits.org/en/v1.0.0/
