@@ -1,9 +1,13 @@
 // import modules
 import express from "express"
 import dotenv from "dotenv"
+import connectDB from "./config/db.js";
 
 // config the .env
 dotenv.config();
+
+// Connect DB
+connectDB()
 
 
 const app = express()
