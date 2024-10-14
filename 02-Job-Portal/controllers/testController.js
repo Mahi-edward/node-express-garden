@@ -1,4 +1,5 @@
 
 export const testPostController = async (req, res) => {
-    res.status(200).send("Hello Maheshwaran")
+    const { name = "mahesh" } = req.body;
+    res.status(200).send(`Hello ${name}`)
 }

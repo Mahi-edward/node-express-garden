@@ -1,6 +1,10 @@
-// import modules
+// packages import
 import express from "express"
 import dotenv from "dotenv"
+import cors from "cors"
+import morgan from "morgan";
+
+// files import
 import connectDB from "./config/db.js";
 import testRoutes from "./routes/testRoutes.js"
 
@@ -10,8 +14,15 @@ dotenv.config();
 // Connect DB
 connectDB()
 
-
 const app = express()
+
+
+
+// middlewares
+app.use(express.json())
+app.use(cors())
+app.use(morgan("dev"))
+
 
 // routes
 app.use("/api/v1/test", testRoutes)
