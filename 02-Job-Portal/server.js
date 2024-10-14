@@ -2,6 +2,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import connectDB from "./config/db.js";
+import testRoutes from "./routes/testRoutes.js"
 
 // config the .env
 dotenv.config();
@@ -12,10 +13,8 @@ connectDB()
 
 const app = express()
 
-app.get("/", (req, res) => {
-    console.log("Get Request")
-    res.send("<h1>Home Page</h1>")
-})
+// routes
+app.use("/api/v1/test", testRoutes)
 
 // PORT 
 const PORT = process.env.PORT || 8080
