@@ -27,7 +27,7 @@ const userSchema = mongoose.Schema({
     },
 
 },
-    { timestamp: true }
+    { timestamps: true }
 );
 
 // In DB collection name User -> users will create 
