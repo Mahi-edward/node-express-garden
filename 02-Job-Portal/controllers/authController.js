@@ -1,6 +1,6 @@
 import userModel from "../models/userModel.js"
 
-export const userRegisterController = async (req, res) => {
+export const userRegisterController = async (req, res, next) => {
 
     try {
         // destructure the values
@@ -8,15 +8,18 @@ export const userRegisterController = async (req, res) => {
 
         // own validation - without library
         if (!name) {
-            return res.status(400).send({ isSuccess: false, message: "Please provide a name" })
+            // return res.status(400).send({ isSuccess: false, message: "Please provide a name" })
+            next( "Please provide a name")
         }
 
         if (!email) {
-            return res.status(400).send({ isSuccess: false, message: "Please provide a email" })
+            // return res.status(400).send({ isSuccess: false, message: "Please provide a email" })
+            next("Please provide an email")
         }
 
         if (!password) {
-            return res.status(400).send({ isSuccess: false, message: "Please provide a password" })
+            // return res.status(400).send({ isSuccess: false, message: "Please provide a password" })
+            next("Please provide a password")
         }
 
         // check if the user already exists in the DB
@@ -40,11 +43,7 @@ export const userRegisterController = async (req, res) => {
         })
 
     } catch (error) {
-        res.status(400).send({
-            isSuccess: false,
-            message: "User register controller failed",
-            error
-        })
+        next(error);
     }
 
 
