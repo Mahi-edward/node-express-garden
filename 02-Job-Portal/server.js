@@ -46,3 +46,4 @@ const PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`Server is running ${process.env.MODE} mode on port ${PORT}`))
 
 // https://www.conventionalcommits.org/en/v1.0.0/
+// https://www.freecodecamp.org/news/how-to-hash-passwords-with-bcrypt-in-nodejs/

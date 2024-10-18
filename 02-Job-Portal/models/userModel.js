@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import bcrypt from "bcryptjs"
 
 
 const userSchema = mongoose.Schema({
@@ -29,6 +30,16 @@ const userSchema = mongoose.Schema({
 },
     { timestamps: true }
 );
+
+
+// Middlewares
+
+// hase the password, before save the document in the DB collection
+userSchema.pre("save", async function () {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt)
+
+})
 
 // In DB collection name User -> users will create 
 // Automatically convert singular to Plural and converts lowercases
